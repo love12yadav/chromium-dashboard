@@ -46,6 +46,7 @@
 
   {% endif %}
 
+  {% if feature.feature_type_int != 2 %}
   <br><br><h4>TAG review</h4>
   {{feature.tag_review|urlize}}
 
@@ -53,7 +54,7 @@
     <br><br><h4>TAG review status</h4>
     {{feature.tag_review_status}}
   {% endif %}
-
+  {%- endif -%}
   {% for stage in stage_info.ot_stages %}
     {% if stage.ot_display_name %}
       <br><br><h4>Origin Trial Name</h4>
@@ -205,10 +206,10 @@
 {% endif %}
 
 
-
+{%- if feature.feature_type_int != 2 %}
 <br><br><h4>Requires code in //chrome?</h4>
 {{feature.requires_embedder_support}}
-
+{%- endif -%}
 {% if feature.browsers.chrome.bug %}
   <br><br><h4>Tracking bug</h4>
   <a href="{{feature.browsers.chrome.bug}}">{{feature.browsers.chrome.bug}}</a>
@@ -264,7 +265,7 @@
 {% include "estimated-milestones-table.html" %}
 
 
-{% if 'anticipated_spec_changes' in sections_to_show or feature.anticipated_spec_changes %}
+{%- if feature.feature_type_int != 2 -%}{% if 'anticipated_spec_changes' in sections_to_show or feature.anticipated_spec_changes %}
   <br><br><h4>Anticipated spec changes</h4>
   <p style="font-style: italic">
     Open questions about a feature may be a source of future web compat or
@@ -274,7 +275,7 @@
     structure of the API in a non-backward-compatible way).</p>
 
   {{feature.anticipated_spec_changes|urlize}}
-{% endif %}
+{% endif %}{%- endif -%}
 
 <br><br><h4>Link to entry on the {{APP_TITLE}}</h4>
 <a href="{{default_url}}">{{default_url}}</a>
