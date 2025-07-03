@@ -1,11 +1,11 @@
 {% extends "_base.html" %}
 
-{% block page_title %}{{ feature.name }} - {% endblock %}
+{% block page_title %}{{ feature.name }} - {% endblock -%}
 
 {% block css %}
 <link rel="stylesheet" href="/static/css/forms.css?v={{app_version}}">
 <link rel="stylesheet" href="/static/css/features/launch.css?v={{app_version}}">
-{% endblock %}
+{%- endblock -%}
 
 {% block subheader %}
 <div id="subheader">
@@ -13,7 +13,7 @@
     <h2>Next steps for the Blink launch process</h2>
   </div>
 </div>
-{% endblock %}
+{%- endblock -%}
 
 {% block content %}
 
@@ -23,14 +23,14 @@
   feature details with people who are collaborating with you on
   the feature.
 </div>
-{% endif %}
+{%- endif -%}
 
 {% if launch %}
 <section>
 <h3>Click through this link to file a launch-tracking bug</h3>
   {% include "blink/launch_bug.html" %}
 </section>
-{% endif %}
+{%- endif -%}
 
 {% if intent %}
 <section>
@@ -40,7 +40,7 @@
   sending it to spec-mentors@chromium.org.  They can help make sure
   that your intent email is ready for review.</p>
 </section>
-{% endif %}
+{%- endif -%}
 
 {% if intent %}
 <section>
@@ -75,7 +75,7 @@
     {% include "blink/intent_to_implement.html" %}
   </div> <!-- end email body div -->
 </section>
-{% endif %}
+{%- endif -%}
 
 {% if 'need_api_owners_lgtms' in sections_to_show %}
 <section>
@@ -87,9 +87,9 @@ According to the
 after that, you're free to ship your feature.
 </span>
 </section>
-{% endif %}
+{%- endif -%}
 
-{% endblock %}
+{%- endblock -%}
 
 {% block js %}
 <script nonce="{{nonce}}">
@@ -110,4 +110,4 @@ after that, you're free to ship your feature.
       });
   }
 </script>
-{% endblock %}
+{%- endblock -%}
