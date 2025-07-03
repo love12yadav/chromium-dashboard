@@ -4,7 +4,7 @@
     <a href="mailto:{{owner}}">{% if loop.last %}{{owner}}</a>{% else %}{{owner}}</a>,{% endif %}
   {% endfor %}
 
-  {% if feature.explainer_links or feature.feature_type_int != 2 %}
+  {% if feature.explainer_links or (feature.feature_type_int != 1 and feature.feature_type_int != 2) %}
     <br><br><h4>Explainer</h4>
     {% if not feature.explainer_links %}None{% endif %}
     {% for link in feature.explainer_links %}
